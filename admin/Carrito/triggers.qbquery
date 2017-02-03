@@ -1,0 +1,32 @@
+﻿delimiter //
+create trigger del_user_data before delete on usuarios
+
+for each row
+begin
+
+update eventos set idUsuario = '1' where idUsuario = old.idUsuario;
+update noticias set idUsuario = '1' where idUsuario = old.idUsuario;
+update lista_de_deseos set idUsuario = '1' where idUsuario = old.idUsuario;
+update pedidos set idUsuario = '1' where idUsuario = old.idUsuario;
+end;//
+delimiter;
+
+delimiter //
+create trigger del_categoria before delete on categorias
+
+for each row
+begin
+
+update productos set idCategoria = 0 where idCategoria = old.idCategoria;
+end; //
+delimiter;
+
+delimiter //
+create trigger del_pedidos before delete on pedidos
+
+for each row
+begin
+
+update det_pedidos set idPedidos = 0 where idPedidos = old.idPedidos;
+end; //
+delimiter //

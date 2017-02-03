@@ -1,0 +1,17 @@
+AddDefaultCharset UTF-8
+Options -Indexes
+
+#<IfModule mod_rewrite.c>
+
+RewriteEngine on
+RewriteBase /ikonlab-fwk/
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+#</IfModule>
+
+ErrorDocument 404 http://localhost/ikonlab-fwk/404
